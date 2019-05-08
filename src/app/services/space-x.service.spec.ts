@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SpaceXServiceService } from './space-xservice.service';
+import { SpaceXService } from './space-x.service';
 
-describe('SpaceXServiceService', () => {
+describe('SpaceXService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SpaceXServiceService = TestBed.get(SpaceXServiceService);
+    const service: SpaceXService = TestBed.get(SpaceXService);
     expect(service).toBeTruthy();
   });
 });

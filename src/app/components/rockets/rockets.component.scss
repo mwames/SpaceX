@@ -1,0 +1,54 @@
+.centered {
+    text-align: center;
+}
+.table {
+    width: 100%;
+}
+.row {
+    display: table-row;
+    width: auto;
+}
+.cell {
+    padding: 5px;
+    display: table-cell;
+    width: 25%;
+    box-sizing: border-box;
+    border: 1px solid #dedede;
+}
+.top {
+    vertical-align: top;
+}
+.bottom {
+    vertical-align: bottom;
+}
+.middle {
+    vertical-align: middle;
+}
+.left {
+    text-align: left;
+}
+.center {
+    text-align: center;
+}
+.right {
+    text-align: right;
+}
+.title {
+    background-color: #000;
+    color: #fff;
+}
+.data {
+    color: #000;
+}
+.even {
+  background-color:#EDEDED;
+}
+.odd {
+  background-color:#667380;
+}
+.no-break {
+    white-space: nowrap;
+}
+.indent {
+    padding-left: 2em;
+}

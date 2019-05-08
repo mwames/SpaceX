@@ -1,3 +1,64 @@
-<p>
-  rockets works!
-</p>
+<div class="centered">
+    <h2>SpaceX Rockets</h2>
+</div>
+<div class="table">
+    <div class="row">
+        <div class="cell title middle center no-break" *ngFor="let column of columns" (click)="sort(column.property)">
+            {{column.name}}
+            <fa-icon *ngIf="column.property === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
+            <fa-icon *ngIf="column.property === currentProperty && reverse" [icon]="caretDown"></fa-icon>
+        </div>
+    </div>
+    <div class="row" *ngFor="let rocket of rockets">
+        <div class="cell data top left no-break">{{rocket.rocket_name}}</div>
+        <div class="cell data top left no-break">{{rocket.first_flight}}</div>
+        <div class="cell data top left">{{rocket.cost_per_launch | currency}}</div>
+        <div class="cell data top left">{{rocket.success_rate_pct}}%</div>
+        <div class="cell data top left">{{rocket.active}}</div>
+        <div class="cell data top left">{{rocket.boosters}}</div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let key of getKeys(rocket.height)">{{rocket.height[key]}} {{key}}</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let key of getKeys(rocket.diameter)">{{rocket.diameter[key]}} {{key}}</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let key of getKeys(rocket.mass)">{{rocket.mass[key]}} {{key}}</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let weight of rocket.payload_weights">{{weight.name}}: {{weight.kg}} kg /
+                {{weight.lb}} lb</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let key of getKeys(rocket.first_stage)">{{key | PrettyPrintKey}}:
+                {{rocket.first_stage[key]}}</div>
+            <div class="no-break">Thrust sea level: {{rocket.first_stage.thrust_sea_level.kN}} kN /
+                {{rocket.first_stage.thrust_sea_level.lbf}} lbf</div>
+            <div class="no-break">Thrust Vacuum: {{rocket.first_stage.thrust_vacuum.kN}} kN /
+                {{rocket.first_stage.thrust_vacuum.lbf}} lbf</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let key of getKeys(rocket.second_stage)">{{key | PrettyPrintKey}}:
+                {{rocket.second_stage[key]}}</div>
+            <div class="no-break">Thrust: {{rocket.second_stage.thrust.kN}} kN /
+                {{rocket.second_stage.thrust.lbf}} lbf</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let key of getKeys(rocket.engines)">{{key | PrettyPrintKey}}:
+                {{rocket.engines[key]}}</div>
+            <div class="no-break">Thrust sea level: {{rocket.engines.thrust_sea_level.kN}} kN /
+                {{rocket.engines.thrust_sea_level.lbf}} lbf</div>
+            <div class="no-break">Thrust Vacuum: {{rocket.engines.thrust_vacuum.kN}} kN /
+                {{rocket.engines.thrust_vacuum.lbf}} lbf</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break">number: {{rocket.landing_legs.number}}</div>
+            <div class="no-break">material: {{rocket.landing_legs.material || 'not available'}}</div>
+        </div>
+        <div class="cell data top left">
+            <div class="no-break" *ngFor="let url of rocket.flickr_images; let i = index"><a href="{{url}}"
+                    target="_blank">image {{i}}</a></div>
+        </div>
+        <div class="cell data top left"><a href="{{rocket.wikipedia}}" target="_blank">{{rocket.wikipedia}}</a></div>
+    </div>
+</div>

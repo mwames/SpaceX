@@ -1,0 +1,60 @@
+.container {
+    overflow-x: auto;
+
+    .header {
+        white-space: nowrap;
+        display: inline-block;
+        padding: 0em 1em;
+        background-color: #000;
+        border: 1px solid #000;
+        
+
+        .title {
+            display: inline-block;
+            text-align: center;
+            color: #fff;
+        }
+    }
+
+    .row {
+        display: inline-block;
+        white-space: nowrap;
+        padding: 1em;
+        border: 1px solid #dedede;
+
+        .cell {
+            display: inline-block;
+            text-align: center;
+        }
+    
+    }
+    
+    .small {
+        width: 125px;
+    }
+
+    .med {
+        width: 280px;
+    }
+
+    .large {
+        width: 360px;
+    }
+
+    .xlarge {
+        width: 500px;
+    }
+
+    .xtreme {
+        width: 800px;
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
+
+.no-break {
+    white-space: nowrap;
+}

@@ -133,6 +133,7 @@
                         <div class="title small">Launch Site</div>
                         <div class="title small">Launch Success</div>
                         <div class="title xlarge">Launch Failure Details</div>
+                        <div class="title xlarge">Details</div>
                     </div>
                     <div *ngFor="let launch of getLaunches(rocket.rocket_id)">
                         <div class="row">
@@ -141,11 +142,12 @@
                             <div class="cell small">{{launch.launch_date_utc | date}}</div>
                             <div class="cell small">{{launch.launch_site.site_name}}</div>
                             <div class="cell small">{{launch.launch_success}}</div>
-                            <div class="cell xlarge" style="white-space: unset; word-break: normal">
+                            <div class="cell xlarge">
                                 <div>{{launch.launch_failure_details?.time}}</div>
                                 <div>{{launch.launch_failure_details?.altitude}}</div>
                                 <div>{{launch.launch_failure_details?.reason}}</div>
                             </div>
+                            <div class="cell xlarge">{{launch.details}}</div>
                         </div>
                     </div>
                 </div>

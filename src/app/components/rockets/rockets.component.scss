@@ -25,6 +25,7 @@
         .cell {
             display: inline-block;
             text-align: center;
+            white-space: normal;
         }
     
     }
@@ -52,10 +53,6 @@
 
 html, body {
     overflow-x: hidden;
-}
-
-.no-break {
-    white-space: nowrap;
 }
 
 .text-center {

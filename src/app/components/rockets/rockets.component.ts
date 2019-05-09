@@ -3,6 +3,8 @@ import { SpaceXService } from 'src/app/services/space-x.service';
 import { Sorter } from 'src/app/helpers/sorter';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
 import { slide } from 'src/app/animations/slide'
 
 @Component({
@@ -14,6 +16,8 @@ import { slide } from 'src/app/animations/slide'
 export class RocketsComponent implements OnInit {
     caretUp = faCaretUp;
     caretDown = faCaretDown;
+    plus = faPlusCircle;
+    minus = faMinusCircle;
 
     public rockets = null;
     public launches = null;
@@ -31,6 +35,8 @@ export class RocketsComponent implements OnInit {
         });
 
         this.spaceXService.getLaunches().subscribe(launches => {
+
+            // Group the launches by rocket_id
             this.launches = launches.reduce((acc, cur) => {
                 acc[cur.rocket.rocket_id] = [...acc[cur.rocket.rocket_id] || [], cur];
                 return acc;
@@ -71,6 +77,7 @@ export class RocketsComponent implements OnInit {
         this.launchCount = this.launches[rocketid] ? this.launches[rocketid].length : 0;
     }
 
+    // Returns the launches for the selected rocket.
     public getLaunches(rocketid) {
         return this.launches[rocketid];
     }

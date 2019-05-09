@@ -13,6 +13,7 @@
             display: inline-block;
             text-align: center;
             color: #fff;
+            cursor: pointer;
         }
     }
 
@@ -21,13 +22,31 @@
         white-space: nowrap;
         padding: 1em;
         border: 1px solid #dedede;
+        position: relative;
 
         .cell {
             display: inline-block;
             text-align: center;
             white-space: normal;
+            min-height: 1px;
+        }
+
+        .icon {
+            position: absolute;
+            left: 25px;
+            top: 50%;
+
+            fa-icon {
+                cursor: pointer;
+                position: relative;
+                top: -50%;
+            }
         }
     
+    }
+
+    .tiny {
+        width: 50px;
     }
     
     .small {
@@ -45,14 +64,14 @@
     .xlarge {
         width: 500px;
     }
-
-    .xtreme {
-        width: 800px;
-    }
 }
 
-html, body {
-    overflow-x: hidden;
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
 }
 
 .text-center {

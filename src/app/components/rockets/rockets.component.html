@@ -7,89 +7,96 @@
     </div>
     <div class="container">
         <div class="header">
-            <div class="cell small title no-break" (click)="sort('rocket_name')">
+            <div class="cell tiny title"></div>
+            <div class="cell small title" (click)="sort('rocket_name')">
                 Rocket Name
                 <fa-icon *ngIf="'rocket_name' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'rocket_name' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('first_flight')">
+            <div class="cell small title" (click)="sort('first_flight')">
                 First Flight
                 <fa-icon *ngIf="'first_flight' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'first_flight' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('cost_per_launch')">
+            <div class="cell small title" (click)="sort('cost_per_launch')">
                 Cost Per Launch
                 <fa-icon *ngIf="'cost_per_launch' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'cost_per_launch' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('success_rate_pct')">
+            <div class="cell small title" (click)="sort('success_rate_pct')">
                 Success Rate
                 <fa-icon *ngIf="'success_rate_pct' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'success_rate_pct' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('active')">
+            <div class="cell small title" (click)="sort('active')">
                 Active
                 <fa-icon *ngIf="'active' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'active' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('boosters')">
+            <div class="cell small title" (click)="sort('boosters')">
                 Boosters
                 <fa-icon *ngIf="'boosters' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'boosters' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('height.feet')">
+            <div class="cell small title" (click)="sort('height.feet')">
                 Height
                 <fa-icon *ngIf="'height.feet' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'height.feet' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('diameter.feet')">
+            <div class="cell small title" (click)="sort('diameter.feet')">
                 Diameter
                 <fa-icon *ngIf="'diameter.feet' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'diameter.feet' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break" (click)="sort('mass.lb')">
+            <div class="cell small title" (click)="sort('mass.lb')">
                 Mass
                 <fa-icon *ngIf="'mass.lb' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'mass.lb' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell large title no-break">Payload Weights</div>
-            <div class="cell large title no-break">First Stage</div>
-            <div class="cell med title no-break">Second Stage</div>
-            <div class="cell med title no-break">Engines</div>
-            <div class="cell med title no-break" (click)="sort('landing_legs.number')">
+            <div class="cell large title">Payload Weights</div>
+            <div class="cell large title">First Stage</div>
+            <div class="cell med title">Second Stage</div>
+            <div class="cell med title">Engines</div>
+            <div class="cell med title" (click)="sort('landing_legs.number')">
                 Landing Legs
                 <fa-icon *ngIf="'landing_legs.number' === currentProperty && !reverse" [icon]="caretUp"></fa-icon>
                 <fa-icon *ngIf="'landing_legs.number' === currentProperty && reverse" [icon]="caretDown"></fa-icon>
             </div>
-            <div class="cell small title no-break">Images</div>
-            <div class="cell large title no-break">Wikipedia</div>
+            <div class="cell small title">Images</div>
+            <div class="cell large title">Wikipedia</div>
         </div>
         <div *ngFor="let rocket of rockets">
-            <div class="row" (click)="expand(rocket.rocket_id)">
-                <div class="cell small no-break">{{rocket.rocket_name}}</div>
-                <div class="cell small no-break">{{rocket.first_flight}}</div>
+            <div class="row">
+                <div class="cell tiny">
+                    <div class="icon">
+                        <fa-icon class="green" (click)="expand(rocket.rocket_id)" *ngIf="rocket.rocket_id !== selectedRocket" [icon]="plus"></fa-icon>
+                        <fa-icon class="red" (click)="expand(rocket.rocket_id)" *ngIf="rocket.rocket_id === selectedRocket" [icon]="minus"></fa-icon>
+                    </div>
+                </div>
+                <div class="cell small">{{rocket.rocket_name}}</div>
+                <div class="cell small">{{rocket.first_flight}}</div>
                 <div class="cell small">{{rocket.cost_per_launch | currency}}</div>
                 <div class="cell small">{{rocket.success_rate_pct}}%</div>
                 <div class="cell small">{{rocket.active}}</div>
                 <div class="cell small">{{rocket.boosters}}</div>
                 <div class="cell small">
-                    <div class="no-break" *ngFor="let key of getKeys(rocket.height)">{{rocket.height[key]}} {{key}}
+                    <div *ngFor="let key of getKeys(rocket.height)">{{rocket.height[key]}} {{key}}
                     </div>
                 </div>
                 <div class="cell small">
-                    <div class="no-break" *ngFor="let key of getKeys(rocket.diameter)">{{rocket.diameter[key]}} {{key}}
+                    <div *ngFor="let key of getKeys(rocket.diameter)">{{rocket.diameter[key]}} {{key}}
                     </div>
                 </div>
                 <div class="cell small">
-                    <div class="no-break" *ngFor="let key of getKeys(rocket.mass)">{{rocket.mass[key]}} {{key}}</div>
+                    <div *ngFor="let key of getKeys(rocket.mass)">{{rocket.mass[key]}} {{key}}</div>
                 </div>
                 <div class="cell large">
-                    <div class="no-break" *ngFor="let weight of rocket.payload_weights">{{weight.name}}: {{weight.kg}}
+                    <div *ngFor="let weight of rocket.payload_weights">{{weight.name}}: {{weight.kg}}
                         kg /
                         {{weight.lb}} lb</div>
                 </div>
                 <div class="cell large">
-                    <div class="no-break" *ngFor="let key of getKeys(rocket.first_stage)">{{key | FormatKey}}:
+                    <div *ngFor="let key of getKeys(rocket.first_stage)">{{key | FormatKey}}:
                         {{rocket.first_stage[key]}}</div>
                     <div class="no-break">Thrust sea level: {{rocket.first_stage.thrust_sea_level.kN}} kN /
                         {{rocket.first_stage.thrust_sea_level.lbf}} lbf</div>
@@ -97,13 +104,13 @@
                         {{rocket.first_stage.thrust_vacuum.lbf}} lbf</div>
                 </div>
                 <div class="cell med">
-                    <div class="no-break" *ngFor="let key of getKeys(rocket.second_stage)">{{key | FormatKey}}:
+                    <div *ngFor="let key of getKeys(rocket.second_stage)">{{key | FormatKey}}:
                         {{rocket.second_stage[key]}}</div>
                     <div class="no-break">Thrust: {{rocket.second_stage.thrust.kN}} kN /
                         {{rocket.second_stage.thrust.lbf}} lbf</div>
                 </div>
                 <div class="cell med">
-                    <div class="no-break" *ngFor="let key of getKeys(rocket.engines)">{{key | FormatKey}}:
+                    <div *ngFor="let key of getKeys(rocket.engines)">{{key | FormatKey}}:
                         {{rocket.engines[key]}}</div>
                     <div class="no-break">Thrust sea level: {{rocket.engines.thrust_sea_level.kN}} kN /
                         {{rocket.engines.thrust_sea_level.lbf}} lbf</div>
@@ -115,8 +122,8 @@
                     <div class="no-break">material: {{rocket.landing_legs.material || 'not available'}}</div>
                 </div>
                 <div class="cell small">
-                    <div class="no-break" *ngFor="let url of rocket.flickr_images; let i = index"><a href="{{url}}"
-                            target="_blank">image {{i}}</a></div>
+                    <div *ngFor="let url of rocket.flickr_images; let i = index"><a href="{{url}}" target="_blank">image
+                            {{i}}</a></div>
                 </div>
                 <div class="cell large"><a href="{{rocket.wikipedia}}" target="_blank">{{rocket.wikipedia}}</a>
                 </div>

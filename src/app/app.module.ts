@@ -1,5 +1,4 @@
 // Modules
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
@@ -8,27 +7,22 @@ import { NgModule } from '@angular/core';
 
 //Components
 import { AppComponent } from './app.component';
-import { LaunchesComponent } from './components/launches/launches.component';
-import { RocketComponent } from './components/rocket/rocket.component';
 import { RocketsComponent } from './components/rockets/rockets.component';
-import { SortableTableComponent } from './components/sortable-table/sortable-table.component';
-import { SpaceXService } from './services/space-x.service';
 
 // Pipes
-import { PrettyPrintKey } from 'src/app/Pipes/prettyPrintKey.pipe';
-import { ArraySorter } from './helpers/ArraySorter';
+import { FormatKey } from 'src/app/pipes/format-key';
+
+//Providers
+import { Sorter } from './helpers/sorter';
+import { SpaceXService } from './services/space-x.service';
 
 @NgModule({
     declarations: [
         AppComponent,
-        LaunchesComponent,
-        PrettyPrintKey,
-        RocketComponent,
-        RocketsComponent,
-        SortableTableComponent
+        FormatKey,
+        RocketsComponent
     ],
     imports: [
-        AppRoutingModule,
         BrowserModule,
         FontAwesomeModule,
         FormsModule,
@@ -36,7 +30,7 @@ import { ArraySorter } from './helpers/ArraySorter';
     ],
     providers: [
         SpaceXService,
-        ArraySorter
+        Sorter
     ],
     bootstrap: [AppComponent]
 })

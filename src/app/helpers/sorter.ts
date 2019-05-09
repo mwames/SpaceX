@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
 })
-export class ArraySorter {
+export class Sorter {
     public sort(array, property, reverse) {
         property = property.split('.');
 

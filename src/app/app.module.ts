@@ -1,4 +1,5 @@
 // Modules
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
@@ -15,14 +16,17 @@ import { FormatKey } from 'src/app/pipes/format-key';
 //Providers
 import { Sorter } from './helpers/sorter';
 import { SpaceXService } from './services/space-x.service';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         FormatKey,
-        RocketsComponent
+        RocketsComponent,
+        LoadingSpinnerComponent
     ],
     imports: [
+        BrowserAnimationsModule,
         BrowserModule,
         FontAwesomeModule,
         FormsModule,

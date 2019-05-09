@@ -3,11 +3,13 @@ import { SpaceXService } from 'src/app/services/space-x.service';
 import { Sorter } from 'src/app/helpers/sorter';
 import { faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { slide } from 'src/app/animations/slide'
 
 @Component({
     selector: 'app-rockets',
     templateUrl: './rockets.component.html',
-    styleUrls: ['./rockets.component.scss']
+    styleUrls: ['./rockets.component.scss'],
+    animations: [slide]
 })
 export class RocketsComponent implements OnInit {
     caretUp = faCaretUp;
@@ -25,7 +27,7 @@ export class RocketsComponent implements OnInit {
     ngOnInit() {
         this.spaceXService.getRockets().subscribe(rockets => {
             this.rockets = rockets;
-            this.sort('rocket_id');
+            this.sort('rocket_name');
         });
 
         this.spaceXService.getLaunches().subscribe(launches => {

@@ -1,3 +1,6 @@
+<div *ngIf="!launches">
+    <loading-spinner></loading-spinner>
+</div>
 <div *ngIf="launches">
     <div class="text-center">
         <h2>SpaceX Rockets</h2>
@@ -118,7 +121,10 @@
                 <div class="cell large"><a href="{{rocket.wikipedia}}" target="_blank">{{rocket.wikipedia}}</a>
                 </div>
             </div>
-            <div *ngIf="selectedRocket === rocket.rocket_id">
+            <div *ngIf="selectedRocket === rocket.rocket_id" [@slide]>
+                <div *ngIf="!launchCount > 0">
+                    <h3>No launch information is available for this rocket.</h3>
+                </div>
                 <div class="container" *ngIf="launchCount > 0">
                     <div class="header">
                         <div class="title med">Mission</div>
